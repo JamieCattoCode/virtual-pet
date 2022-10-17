@@ -17,11 +17,27 @@ describe('constructor', () => {
 })
 
 describe('growUp method', () => {
-    it('growUp method increments age by 1', () => {
+    it('increments age by 1', () => {
         const fides = new Pet('Fido');
         fides.growUp();
         expect(fides.age).toStrictEqual(1);
         fides.growUp();
         expect(fides.age).toStrictEqual(2);
+    })
+
+    it('increases hunger by 5', () => {
+        const fides = new Pet('Fido')
+        fides.growUp();
+        expect(fides.hunger).toStrictEqual(5);
+        fides.growUp();
+        expect(fides.hunger).toStrictEqual(10);
+    })
+
+    it('decreases fitness by 3', () => {
+        const fides = new Pet('Fido')
+        fides.growUp();
+        expect(fides.fitness).toStrictEqual(7);
+        fides.growUp();
+        expect(fides.fitness).toStrictEqual(4);
     })
 })
