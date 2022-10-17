@@ -26,7 +26,7 @@ describe('growUp method', () => {
     })
 
     it('increases hunger by 5', () => {
-        const fides = new Pet('Fido')
+        const fides = new Pet('Fido');
         fides.growUp();
         expect(fides.hunger).toStrictEqual(5);
         fides.growUp();
@@ -34,10 +34,29 @@ describe('growUp method', () => {
     })
 
     it('decreases fitness by 3', () => {
-        const fides = new Pet('Fido')
+        const fides = new Pet('Fido');
         fides.growUp();
         expect(fides.fitness).toStrictEqual(7);
         fides.growUp();
         expect(fides.fitness).toStrictEqual(4);
     })
+
+describe('walk method', () => {
+    it('increases fitness by 4', () => {
+        const fides = new Pet('Fido');
+        fides.growUp(); fides.growUp();
+        fides.walk();
+        expect(fides.fitness).toStrictEqual(8);
+    })
+
+    it('does not let fitness go above 10', () =>{
+        const fides = new Pet('Fido');
+        fides.walk();
+        expect(fides.fitness).toStrictEqual(10);
+        fides.growUp();
+        expect(fides.fitness).toStrictEqual(7);
+        fides.walk();
+        expect(fides.fitness).toStrictEqual(10);
+    })
+})
 })
