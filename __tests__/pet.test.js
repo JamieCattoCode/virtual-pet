@@ -78,4 +78,34 @@ describe('feed method', () => {
     })
 })
 
+describe('checkUp', () => {
+    it('returns that it is hungry and needs a walk if it is hungry and unfit', () => {
+        const fides = new Pet('Fido');
+        fides.hunger = 6;
+        fides.fitness = 2;
+        expect(fides.checkUp()).toBe('I am hungry AND I need a walk!');
+    })
+
+    it('returns that it needs a walk if it is only unfit', () => {
+        const fides = new Pet('Fido');
+        fides.hunger = 2;
+        fides.fitness = 2;
+        expect(fides.checkUp()).toBe('I need a walk');
+    })
+
+    it('returns that it is hungry if it is hungry', () => {
+        const fides = new Pet('Fido');
+        fides.hunger = 6;
+        fides.fitness = 5;
+        expect(fides.checkUp()).toBe('I am hungry');
+    })
+
+    it('returns that it feels great if it neither unfit nor hungry', () => {
+        const fides = new Pet('Fido');
+        fides.hunger = 3;
+        fides.fitness = 8;
+        expect(fides.checkUp()).toBe('I feel great!');
+    })
+})
+
 })
