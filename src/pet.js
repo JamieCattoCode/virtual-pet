@@ -1,4 +1,5 @@
 const MAX_FITNESS = 10;
+const MIN_HUNGER = 0;
 
 function Pet(name) {
     this.name = name;
@@ -20,6 +21,15 @@ Pet.prototype = {
         }
         else {
             this.fitness += 4;
+        }
+    },
+
+    feed (){
+        if ((this.hunger - 3) <= MIN_HUNGER){
+            this.hunger = MIN_HUNGER;
+        }
+        else {
+            this.hunger -= 3;
         }
     }
 }

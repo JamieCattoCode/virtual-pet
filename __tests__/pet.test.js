@@ -59,4 +59,23 @@ describe('walk method', () => {
         expect(fides.fitness).toStrictEqual(10);
     })
 })
+
+describe('feed method', () => {
+    it('decreases hunger by 3', () => {
+        const fides = new Pet('Fido');
+        fides.hunger = 7;
+        fides.feed();
+        expect(fides.hunger).toStrictEqual(4);
+    })
+
+    it('does not let hunger go below 0', () => {
+        const fides = new Pet('Fido');
+        fides.hunger = 2;
+        fides.feed();
+        expect(fides.hunger).toStrictEqual(0);
+        fides.feed();
+        expect(fides.hunger).toStrictEqual(0);
+    })
+})
+
 })
