@@ -41,15 +41,22 @@ describe('growUp method', () => {
         expect(fides.fitness).toStrictEqual(4);
     })
 
+    it("throws an error if the pet is not alive", () => {
+        const fides = new Pet('Fido');
+        fides.age = 50;
+        expect(() => fides.growUp()).toThrow('Your pet is no longer alive :(');
+    })
+
+    
 describe('walk method', () => {
     it('increases fitness by 4', () => {
         const fides = new Pet('Fido');
-        fides.growUp(); fides.growUp();
+        fides.fitness = 4;
         fides.walk();
         expect(fides.fitness).toStrictEqual(8);
     })
 
-    it('does not let fitness go above 10', () =>{
+    it('does not let fitness go above 10', () => {
         const fides = new Pet('Fido');
         fides.walk();
         expect(fides.fitness).toStrictEqual(10);
@@ -57,6 +64,12 @@ describe('walk method', () => {
         expect(fides.fitness).toStrictEqual(7);
         fides.walk();
         expect(fides.fitness).toStrictEqual(10);
+    })
+
+    it("throws an error if the pet is not alive", () => {
+        const fides = new Pet('Fido');
+        fides.age = 50;
+        expect(() => fides.walk()).toThrow('Your pet is no longer alive :(');
     })
 })
 
@@ -75,6 +88,12 @@ describe('feed method', () => {
         expect(fides.hunger).toStrictEqual(0);
         fides.feed();
         expect(fides.hunger).toStrictEqual(0);
+    })
+
+    it("throws an error if the pet is not alive", () => {
+        const fides = new Pet('Fido');
+        fides.age = 50;
+        expect(() => fides.feed()).toThrow('Your pet is no longer alive :(');
     })
 })
 
@@ -105,6 +124,16 @@ describe('checkUp', () => {
         fides.hunger = 3;
         fides.fitness = 8;
         expect(fides.checkUp()).toBe('I feel great!');
+    })
+})
+
+describe('isAlive', () => {
+    it('returns true if the pet is alive, and false if not', () => {
+        const fides = new Pet('Fido');
+        fides.age = 30;
+        expect(fides.isAlive).toBe(false);
+        fides.age = 20;
+        expect(fides.isAlive).toBe(true);
     })
 })
 
