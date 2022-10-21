@@ -137,4 +137,13 @@ describe('isAlive', () => {
     })
 })
 
+describe('adoptChild', () => {
+    it('adds the child to the parent\'s children property.', () => {
+        const parent = new Pet('Johnson');
+        const child = new Pet("Jimson")
+        parent.adoptChild(child);
+        expect(parent.children).toStrictEqual([child]);
+    })
+})
+
 })

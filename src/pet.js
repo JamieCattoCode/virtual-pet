@@ -14,6 +14,7 @@ function Pet(name) {
     this.age = 0;
     this.hunger = 0;
     this.fitness = MAX_FITNESS;
+    this.children = [];
 }
 
 Pet.prototype = {
@@ -77,6 +78,15 @@ Pet.prototype = {
         }
         else {
             return "I feel great!";
+        }
+    },
+
+    adoptChild (child) {
+        if (!this.isAlive){
+            throw new Error(PET_DEAD_MSG);
+        }
+        else {
+            this.children.push(child);
         }
     }
 }
